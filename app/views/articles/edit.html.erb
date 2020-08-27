@@ -1,0 +1,21 @@
+<!-- <%= form_tag articles_path do %>
+  <label>Article title:</label><br>
+  <%= text_field_tag :title %><br>
+
+  <label>Article Description</label><br>
+  <%= text_area_tag :description %><br>
+
+  <%= submit_tag "Submit Article" %>
+<% end %> -->
+
+<%= form_for @article do |f| %> <!--the form_for form helper automatically sets up the URL that this form will be sent to. Because @article is an @instance_variable that is gotten from the edit action in the controller, form_for understands this to be an already existant Article object, and sends it to the update path -->
+<!--since @article already exists and already has values assigned to its attributes, the below f.text_field/f.text_area will be populated with its existing corresponding values. -->
+    <%= f.label 'Article Title' %><br>
+    <%= f.text_field :title %><br>
+
+    <%= f.label 'Article Description'%><br>
+    <%= f.text_area :description %><br>
+
+    <%= f.submit "Submit Article" %>
+<!--when submited (the user clicks the Submit Article button), this form and its new user input data is routed to the update action in the controller-->
+<%end%>
